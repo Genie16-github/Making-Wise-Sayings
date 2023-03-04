@@ -1,46 +1,28 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import org.example.system.controller.SystemController;
+import org.example.wiseSaying.controller.WiseSayingController;
 
 public class App {
-    private final Scanner sc;
-
-    public App(Scanner sc){
-        this.sc = sc;
-    }
-
     public void run() {
-        System.out.println("== 명언 앱 ==");
+        System.out.println("== 명언앱 ==");
 
-        long lastWiseSayingId = 0;
-        List<WiseSaying> wiseSayings = new ArrayList<>();
+        SystemController systemController = new SystemController();
+        WiseSayingController wiseSayingController = new WiseSayingController();
 
-        label:
         while (true) {
             System.out.print("명령) ");
-            String command = sc.nextLine().trim();   // 좌우 공백 제거
-            switch (command) {
-                case "종료":
-                    break label;
-                case "등록":
-                    long id = lastWiseSayingId + 1;
-                    System.out.print("명언 : ");
-                    String content = sc.nextLine().trim();
-                    System.out.print("작가 : ");
-                    String authorName = sc.nextLine().trim();
+            // trim() : 혹시 있을지 모를 좌우공백제거된 버전으로 주세요.
+            String command = Container.getScanner().nextLine().trim();
 
-                    WiseSaying wiseSaying = new WiseSaying(id, content, authorName);
-                    wiseSayings.add(wiseSaying);
+            if (command.equals("종료")) {
+                systemController.exit();
 
-                    System.out.printf("%d번 명언이 등록되었습니다.\n", id);
-                    lastWiseSayingId = id;                // 인덱스 증가
-
-                    break;
-                case "목록":
-                    System.out.printf("생성된 명언 수 : %d\n", wiseSayings.size());
-                    break;
+                break;
+            } else if (command.equals("등록")) {
+                wiseSayingController.write();
+            } else if (command.equals("목록")) {
+                wiseSayingController.list();
             }
         }
     }
