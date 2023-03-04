@@ -12,10 +12,11 @@ public class App {
     public void run() {
         System.out.println("== 명언 앱 ==");
 
+        long lastWiseSayingId = 1;
+
         while (true) {
             System.out.print("명령) ");
-            String command = sc.nextLine().trim();  // 좌우 공백 제거
-
+            String command = sc.nextLine().trim();   // 좌우 공백 제거
             if (command.equals("종료")) {
                 break;
             } else if (command.equals("등록")) {
@@ -25,6 +26,8 @@ public class App {
                 String authorName = sc.nextLine().trim();
 
                 System.out.println("1번 명언이 등록되었습니다.");
+                System.out.printf("%d번 명언이 등록되었습니다.\n", lastWiseSayingId);
+                lastWiseSayingId++;                    // 인덱스 증가
             }
         }
     }
