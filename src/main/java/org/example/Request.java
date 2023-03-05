@@ -26,7 +26,7 @@ public class Request {
             String value = paramStrBits[1];
 
             params.put(key, value);
-        }
+        } // 이곳
     }
 
     public String getActionCode() {
