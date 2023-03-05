@@ -11,6 +11,14 @@ public class WiseSaying {
         this.authorName = authorName;
     }
 
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
+
     public long getId() {
         return id;
     }
@@ -23,14 +31,6 @@ public class WiseSaying {
         return authorName;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public void setAuthorName(String authorName) {
-        this.authorName = authorName;
-    }
-
     public String toJson() {
         return """
                 {
@@ -41,5 +41,10 @@ public class WiseSaying {
                 """
                 .stripIndent()
                 .formatted(id, content, authorName);
+    }
+
+    @Override
+    public String toString() {
+        return  id + " / " + authorName + " / " +  content;
     }
 }

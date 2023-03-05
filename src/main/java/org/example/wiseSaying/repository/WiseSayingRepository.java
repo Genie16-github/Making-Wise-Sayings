@@ -3,7 +3,6 @@ package org.example.wiseSaying.repository;
 import org.example.wiseSaying.entity.WiseSaying;
 import org.example.wiseSaying.table.WiseSayingTable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class WiseSayingRepository {
@@ -13,12 +12,12 @@ public class WiseSayingRepository {
         wiseSayingTable = new WiseSayingTable();
     }
 
-    public List<WiseSaying> findAll() {
-        return wiseSayingTable.findAll();
-    }
-
     public WiseSaying findById(long id) {
         return wiseSayingTable.findById(id);
+    }
+
+    public List<WiseSaying> findAll() {
+        return wiseSayingTable.findAll();
     }
 
     public long write(String content, String authorName) {
@@ -29,7 +28,7 @@ public class WiseSayingRepository {
         return wiseSayingTable.save(wiseSaying);
     }
 
-    public void remove(WiseSaying wiseSaying) {
+    public void delete(WiseSaying wiseSaying) {
         wiseSayingTable.remove(wiseSaying);
     }
 

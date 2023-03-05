@@ -20,13 +20,13 @@ public class Request {
         for (String paramStr : paramsBits) {
             String[] paramStrBits = paramStr.split("=", 2);
 
-            if (paramStrBits.length == 1) continue;
+            if ( paramStrBits.length == 1 ) continue;
 
             String key = paramStrBits[0];
             String value = paramStrBits[1];
 
             params.put(key, value);
-        } // 이곳
+        }
     }
 
     public String getActionCode() {
@@ -37,14 +37,12 @@ public class Request {
         return params.get(name);
     }
 
-    public long getLongParam(String name, long defaultValue) {
-        try {
-            return Long.parseLong(getParam(name));
-        } catch (NumberFormatException e) {
-
+    public long getLongParam(String id, long defaultValue) {
+        try{
+            return Long.parseLong(getParam(id));
+        } catch (NumberFormatException e){
+            return defaultValue;
         }
 
-        return defaultValue;
     }
 }
-

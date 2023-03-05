@@ -8,8 +8,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-class UtilTest {
-
+public class UtilTest {
     @Test
     @DisplayName("Util.json.jsonToMapFromFile")
     void t1() {
@@ -17,8 +16,8 @@ class UtilTest {
 
         Map<String, Object> expected = Map.of(
                 "id", 1L,
-                "content", "나의 죽음을 적들에게 알리지 말라",
-                "authorName", "이순신"
+                "authorName", "이순신",
+                "content", "나의 죽음을 적들에게 알리지 말라"
         );
 
         /*
@@ -66,5 +65,4 @@ class UtilTest {
 
         assertThat(fileNames).isEqualTo(List.of("1.json", "2.json", "3.json"));
     }
-
 }

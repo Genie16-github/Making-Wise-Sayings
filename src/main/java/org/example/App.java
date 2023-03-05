@@ -4,6 +4,7 @@ import org.example.system.controller.SystemController;
 import org.example.wiseSaying.controller.WiseSayingController;
 
 public class App {
+
     public void run() {
         System.out.println("== 명언앱 ==");
 
@@ -11,7 +12,7 @@ public class App {
         WiseSayingController wiseSayingController = new WiseSayingController();
 
         while (true) {
-            System.out.print("명령) ");         // trim() : 좌우 공백 제거
+            System.out.print("명령) ");
             String command = Container.getScanner().nextLine().trim();
             Request rq = new Request(command);
 
@@ -26,10 +27,13 @@ public class App {
                     wiseSayingController.list();
                     break;
                 case "삭제":
-                    wiseSayingController.remove(rq);
+                    wiseSayingController.delete(rq);
                     break;
                 case "수정":
                     wiseSayingController.modify(rq);
+                    break;
+                case "빌드":
+                    wiseSayingController.build();
                     break;
             }
         }
