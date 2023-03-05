@@ -11,18 +11,23 @@ public class App {
         WiseSayingController wiseSayingController = new WiseSayingController();
 
         while (true) {
-            System.out.print("명령) ");
-            // trim() : 혹시 있을지 모를 좌우공백제거된 버전으로 주세요.
+            System.out.print("명령) ");         // trim() : 좌우 공백 제거
             String command = Container.getScanner().nextLine().trim();
+            Request rq = new Request(command);
 
-            if (command.equals("종료")) {
-                systemController.exit();
-
-                break;
-            } else if (command.equals("등록")) {
-                wiseSayingController.write();
-            } else if (command.equals("목록")) {
-                wiseSayingController.list();
+            switch (rq.getActionCode()) {
+                case "종료":
+                    systemController.exit();
+                    return;
+                case "등록":
+                    wiseSayingController.write();
+                    break;
+                case "목록":
+                    wiseSayingController.list();
+                    break;
+                case "삭제":
+                    wiseSayingController.remove(rq);
+                    break;
             }
         }
     }
